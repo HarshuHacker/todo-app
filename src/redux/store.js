@@ -1,14 +1,25 @@
+// Creating Reducer Using Redux Toolkit
 
-// const redux = require("redux");
+import { configureStore } from "@reduxjs/toolkit";
+import { todoReducer } from "./reducers/todoReducer";
+import { noteReducer } from "./reducers/noteReducer";
 
-import * as redux from "redux";
-import {todoReducer} from "./reducers/todoReducer";
-import {noteReducer} from "./reducers/noteReducer"
-
-const reducer = redux.combineReducers({
+export const store = configureStore({
+  reducer: {
     todos: todoReducer,
-    notes: noteReducer
-})
+    notes: noteReducer,
+  },
+});
 
-export const store = redux.createStore(reducer);
+// Creating Reducer Using Redux
 
+// import * as redux from "redux";
+// import {todoReducer} from "./reducers/todoReducer";
+// import {noteReducer} from "./reducers/noteReducer"
+
+// const reducer = redux.combineReducers({
+//     todos: todoReducer,
+//     notes: noteReducer
+// })
+
+// export const store = redux.createStore(reducer);
