@@ -3,11 +3,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { todoReducer } from "./reducers/todoReducer";
 import { noteReducer } from "./reducers/noteReducer";
+import { notificatioNReducer } from "./reducers/notificationReducer";
 
 export const store = configureStore({
   reducer: {
     todos: todoReducer,
     notes: noteReducer,
+    notification: notificatioNReducer,
   },
 });
 
