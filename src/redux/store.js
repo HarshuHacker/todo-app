@@ -1,9 +1,10 @@
 // Creating Reducer Using Redux Toolkit
 
-import { configureStore } from "@reduxjs/toolkit";
+import { Tuple, configureStore } from "@reduxjs/toolkit";
 import { todoReducer } from "./reducers/todoReducer";
 import { noteReducer } from "./reducers/noteReducer";
 import { notificatioNReducer } from "./reducers/notificationReducer";
+import { loggerMiddleware } from "./middlewares/logger";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     notes: noteReducer,
     notification: notificatioNReducer,
   },
+  middleware: () => new Tuple(loggerMiddleware)
 });
 
 // Creating Reducer Using Redux
