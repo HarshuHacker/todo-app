@@ -19,6 +19,9 @@ const todoSlice = createSlice({
         completed: false,
       });
     },
+    initializeTodos: (state, action) => {
+      state.todos = [...action.payload];
+    },
     toggle: (state, action) => {
       state.todos.map((todo, i) => {
         if (i === action.payload) {
