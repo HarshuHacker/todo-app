@@ -12,7 +12,7 @@ export const store = configureStore({
     notes: noteReducer,
     notification: notificatioNReducer,
   },
-  middleware: () => new Tuple(loggerMiddleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),
 });
 
 // Creating Reducer Using Redux

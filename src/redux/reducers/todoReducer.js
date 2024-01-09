@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 // import { ADD_TODO, TOGGLE_TODO } from "../actions/todoActions";
 
 const initialState = {
@@ -36,6 +37,11 @@ const todoSlice = createSlice({
 export const todoReducer = todoSlice.reducer;
 export const todoActions = todoSlice.actions;
 export const todoSelector = (state) => state.todos.todos;
+
+export const getInitialStateAsync = createAsyncThunk(todoActions.initializeTodos, (arg, thunkApi) => {
+  axios.get(arg)
+  .then(response => thunkApi.dispatch(todoActions.initializeTodos(response.data)))
+})
 
 // Creating Reducer Using Redux
 

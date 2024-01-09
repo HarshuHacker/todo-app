@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { todoActions, todoSelector } from "../../redux/reducers/todoReducer";
+import { getInitialStateAsync, todoActions, todoSelector } from "../../redux/reducers/todoReducer";
 
 import "./ToDoList.css";
 import { useEffect } from "react";
@@ -14,8 +14,9 @@ function ToDoList() {
     // fetch("http://localhost:4100/api/todos")
     //   .then((response) => response.json())
     //   .then((data) => console.log(data));
-    axios.get("http://localhost:4100/api/todos")
-    .then(response => disptach(todoActions.initializeTodos(response.data)))
+    // axios.get("http://localhost:4100/api/todos")
+    // .then(response => disptach(todoActions.initializeTodos(response.data)))
+    disptach(getInitialStateAsync("http://localhost:4100/api/todos"))
   }, []);
 
   return (
